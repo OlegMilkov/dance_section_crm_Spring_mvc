@@ -40,6 +40,11 @@
             width: 10%;
         }
 
+        .highlight {
+            background-color: #ffcccc; /* Червоний колір для підсвічування */
+            font-weight: bold; /* Додатковий стиль, який може зробити текст більш виразним */
+        }
+
         input[type="button"] {
             padding: 10px;
             margin: 5px;
@@ -53,7 +58,11 @@
         input[type="button"]:hover {
             background-color: #0056b3;
         }
+
+
+
     </style>
+    <title> Dance studio Db</title>
 </head>
 <body>
 <h2>All Children</h2>
@@ -83,10 +92,13 @@
             <td class="center">${child.surname}</td>
             <td class="center">${child.group_name}</td>
             <td class="center">${child.birthday}</td>
-            <td class="center">${child.health_certificate}</td>
-            <td class="center">${child.form}</td>
-            <td class="center">${child.safety_rules}</td>
-            <td class="center">${child.birth_certificate}</td>
+
+            <td class="center<#if child.health_certificate == '-'> highlight </#if>">${child.health_certificate}</td>
+            <td class="center<#if child.form == '-'> highlight </#if>">${child.form}</td>
+            <td class="center<#if child.safety_rules == '-'> highlight </#if>">${child.safety_rules}</td>
+            <td class="center<#if child.birth_certificate == '-'> highlight </#if>">${child.birth_certificate}</td>
+
+
             <td class="center">${child.payment}</td>
             <td class="center">
                 <input type="button" value="Update" onclick="window.location.href='${updateButton}'"/>
