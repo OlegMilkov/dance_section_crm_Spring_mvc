@@ -23,6 +23,12 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     @Transactional
+    public List<Child> getAllDebtor() {
+        return reportDao.getAllDebtor();
+    }
+
+    @Override
+    @Transactional
     public void saveChild(Child child) {
         reportDao.saveChild(child);
     }

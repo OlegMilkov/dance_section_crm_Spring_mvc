@@ -20,7 +20,15 @@ public class ReportDaoImpl implements ReportDao {
         List<Child> allChild = query.getResultList();
         return allChild;
     }
+    //------------------------------------------------------------
+    @Override
+    public List<Child> getAllDebtor() {
+        Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.health_certificate = '-' OR c.form = '-' OR c.safety_rules = '-' OR c.birth_certificate = '-'");
+        List<Child> result = query.getResultList();
 
+        return result;
+    }
+    //------------------------------------------------------------
     @Override
     public void saveChild(Child child) {
         entityManager.merge(child);

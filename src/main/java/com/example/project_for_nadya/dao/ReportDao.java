@@ -7,6 +7,8 @@ import java.util.List;
 public interface ReportDao {
     public List<Child> getAllChild();
 
+    public List<Child> getAllDebtor();
+
     public void saveChild(Child child);
 
     public Child getChild(int id);

@@ -7,7 +7,10 @@ import java.util.List;
 public interface ReportService {
     public List<Child> getAllChild();
 
-public void saveChild(Child child);
+    public List<Child> getAllDebtor();
+
+
+    public void saveChild(Child child);
 
 public Child getChild(int id);
 

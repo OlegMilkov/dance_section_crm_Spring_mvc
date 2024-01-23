@@ -21,8 +21,17 @@ public class MyRestController {
 
         List<Child> allChild = reportService.getAllChild();
         model.addAttribute("allChild", allChild);
-        return "allChild";
+        return "all-Child";
     }
+
+    @RequestMapping("/showAllDebtor")
+    public  String showAllDebtor(Model model){
+        List<Child> allDebtor = reportService.getAllDebtor();
+        model.addAttribute("allDebtor", allDebtor);
+        return "all-Debtor";
+    }
+
+
 
     @RequestMapping("/addNewChild")
     public String addNewChild(Model model) {
@@ -37,6 +46,10 @@ public class MyRestController {
         return "redirect:/";
     }
 
+@RequestMapping("/mainPage")
+public String mainPage(){
+        return "redirect:/";
+}
 
 
     @RequestMapping("/updateInfo")

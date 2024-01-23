@@ -74,7 +74,8 @@
     </tr>
     </thead>
     <tbody>
-    <#list allChild as child>
+
+    <#list allChild  as child>
         <#assign updateButton = "/updateInfo?childId=" + child.id>
         <#assign deleteButton = "/deleteChild?childId=" + child.id>
         <tr>
@@ -97,6 +98,7 @@
 </table>
 
 <input type="button" value="Add" onclick="window.location.href='addNewChild'"/>
+<input type="button" value="Debtor" onclick="window.location.href='showAllDebtor'"/>
 </body>
 </html>
 
