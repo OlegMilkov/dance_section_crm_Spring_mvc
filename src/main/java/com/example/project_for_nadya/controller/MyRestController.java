@@ -34,7 +34,7 @@ public class MyRestController {
 
 
     @RequestMapping("/addNewChild")
-    @PreAuthorize("hasRole('ROLE_EMPLOYEE') OR hasRole('ROLE_HR')")
+//    @PreAuthorize("hasRole('ROLE_EMPLOYEE') OR hasRole('ROLE_HR')")
     public String addNewChild(Model model) {
         Child child = new Child();
         model.addAttribute("child", child);
@@ -54,7 +54,7 @@ public class MyRestController {
 
 
     @RequestMapping("/updateInfo")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+//    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public String updateChild(@RequestParam("childId") int id, Model model) {
         Child child = reportService.getChild(id);
         model.addAttribute("child", child);
@@ -63,7 +63,7 @@ public class MyRestController {
 
 
     @RequestMapping("/deleteChild")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+//    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public String deleteChild(@RequestParam("childId") int id) {
         reportService.deleteChild(id);
         return "redirect:/";
