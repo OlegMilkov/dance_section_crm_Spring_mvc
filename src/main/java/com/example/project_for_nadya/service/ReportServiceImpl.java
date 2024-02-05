@@ -17,14 +17,14 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     @Transactional
-    public List<Child> getAllChild() {
-        return reportDao.getAllChild();
+    public List<Child> getAllChildren() {
+        return reportDao.getAllChildren();
     }
 
     @Override
     @Transactional
-    public List<Child> getAllDebtor() {
-        return reportDao.getAllDebtor();
+    public List<Child> getAllDebtors() {
+        return reportDao.getAllDebtors();
     }
 
     @Override

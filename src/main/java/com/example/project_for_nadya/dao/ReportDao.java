@@ -5,9 +5,9 @@ import com.example.project_for_nadya.entity.Child;
 import java.util.List;
 
 public interface ReportDao {
-    public List<Child> getAllChild();
+    public List<Child> getAllChildren();
 
-    public List<Child> getAllDebtor();
+    public List<Child> getAllDebtors();
 
     public void saveChild(Child child);
 

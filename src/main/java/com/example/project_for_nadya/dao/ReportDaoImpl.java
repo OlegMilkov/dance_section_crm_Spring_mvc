@@ -15,14 +15,14 @@ public class ReportDaoImpl implements ReportDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Child> getAllChild() {
+    public List<Child> getAllChildren() {
         Query query = entityManager.createQuery("from Child ");
-        List<Child> allChild = query.getResultList();
-        return allChild;
+        List<Child> allChildren = query.getResultList();
+        return allChildren;
     }
     //------------------------------------------------------------
     @Override
-    public List<Child> getAllDebtor() {
+    public List<Child> getAllDebtors() {
         Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.health_certificate = '-' OR c.form = '-' OR c.safety_rules = '-' OR c.birth_certificate = '-'");
         List<Child> result = query.getResultList();
 
