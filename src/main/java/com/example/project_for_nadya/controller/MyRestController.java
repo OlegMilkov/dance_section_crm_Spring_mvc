@@ -4,6 +4,7 @@ import com.example.project_for_nadya.entity.Child;
 import com.example.project_for_nadya.exeption_handling.NoSuchChildExeption;
 import com.example.project_for_nadya.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,6 +51,28 @@ public class MyRestController {
         }
         reportService.deleteChild(id);
         return "Child with ID =" + id + " was deleted";
+    }
+
+    @GetMapping("/children/{group_name}")
+    public List<Child> getChildrenByGroup(@PathVariable String group_name) {
+        List<Child> allChildByGroup = reportService.getChildrenByGroup(group_name);
+        return allChildByGroup;
+    }
+
+//    @GetMapping("/count-by-group/{group_name}")
+//    public int getNumberOfChildrenInEachGroup(@PathVariable String group_name) {
+//        int count = reportService.getNumberOfChildrenInEachGroup(group_name);
+//        System.out.println("Кількість елементів у списку: " + count);
+//
+//        return count;
+//    }
+
+    @GetMapping("/count-by-group/{group_name}")
+    public ResponseEntity<String> getNumberOfChildrenInEachGroup(@PathVariable String group_name) {
+        int count = reportService.getNumberOfChildrenInEachGroup(group_name);
+        String message = "Кількість дітей  у группі "+group_name +": "+ count;
+
+        return ResponseEntity.ok(message);
     }
 
 

@@ -20,6 +20,7 @@ public class ReportDaoImpl implements ReportDao {
         List<Child> allChildren = query.getResultList();
         return allChildren;
     }
+
     //------------------------------------------------------------
     @Override
     public List<Child> getAllDebtors() {
@@ -28,6 +29,7 @@ public class ReportDaoImpl implements ReportDao {
 
         return result;
     }
+
     //------------------------------------------------------------
     @Override
     public void saveChild(Child child) {
@@ -42,9 +44,26 @@ public class ReportDaoImpl implements ReportDao {
 
     @Override
     public void deleteChild(int id) {
-        Query query = entityManager.createQuery("delete from Child "+"where id = :childId");
+        Query query = entityManager.createQuery("delete from Child " + "where id = :childId");
         query.setParameter("childId", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public List<Child> getChildrenByGroup(String group_name) {
+        Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.group_name = :groupName");
+        query.setParameter("groupName", group_name);
+        List<Child> result = query.getResultList();
+        return result;
+    }
+
+    @Override
+    public int getNumberOfChildrenInEachGroup(String group_name){
+        Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.group_name = :groupName");
+        query.setParameter("groupName", group_name);
+        List<Child> result = query.getResultList();
+        int count=result.size();
+        return count;
     }
 
 

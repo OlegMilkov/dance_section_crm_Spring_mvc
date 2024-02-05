@@ -45,5 +45,16 @@ public class ReportServiceImpl implements ReportService {
         reportDao.deleteChild(id);
     }
 
+    @Override
+    @Transactional
+    public List<Child> getChildrenByGroup(String group_name) {
+        return reportDao.getChildrenByGroup(group_name);
+    }
+
+    @Override
+    @Transactional
+    public int getNumberOfChildrenInEachGroup(String group_name) {
+        return reportDao.getNumberOfChildrenInEachGroup(group_name);
+    }
 
 }

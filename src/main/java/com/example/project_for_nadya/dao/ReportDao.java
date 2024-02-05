@@ -13,7 +13,9 @@ public interface ReportDao {
 
     public Child getChild(int id);
 
-public void deleteChild (int id);
+    public void deleteChild(int id);
 
+public List<Child> getChildrenByGroup(String group_name);
 
+public  int getNumberOfChildrenInEachGroup(String group_name);
 }
