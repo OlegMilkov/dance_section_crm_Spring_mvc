@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -48,13 +50,29 @@ public class ReportServiceImpl implements ReportService {
     @Override
     @Transactional
     public List<Child> getChildrenByGroup(String group_name) {
-        return reportDao.getChildrenByGroup(group_name);
+        List<Child> childrenByGroup = reportDao.getChildrenByGroup(group_name);
+
+        Collections.sort(childrenByGroup, Comparator.comparing(Child::getName));
+        return childrenByGroup;
+
     }
 
     @Override
     @Transactional
     public int getNumberOfChildrenInEachGroup(String group_name) {
         return reportDao.getNumberOfChildrenInEachGroup(group_name);
+    }
+
+    @Override
+    @Transactional
+    public List<Child> getChildrenByName(String name) {
+        return reportDao.getChildrenByName(name);
+    }
+
+    @Override
+    @Transactional
+    public List<Child>getAllDistinctGroupNames(){
+        return reportDao.getAllDistinctGroupNames();
     }
 
 }

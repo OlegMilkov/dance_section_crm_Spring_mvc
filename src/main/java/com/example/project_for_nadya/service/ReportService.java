@@ -9,7 +9,6 @@ public interface ReportService {
 
     public List<Child> getAllDebtors();
 
-
     public void saveChild(Child child);
 
     public Child getChild(int id);
@@ -19,5 +18,9 @@ public interface ReportService {
     public List<Child> getChildrenByGroup(String group_name);
 
     public  int getNumberOfChildrenInEachGroup (String group_name);
+
+    public List<Child>getChildrenByName(String name);
+
+    public List <Child> getAllDistinctGroupNames();
 }
 

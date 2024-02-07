@@ -3,9 +3,11 @@ package com.example.project_for_nadya.controller;
 import com.example.project_for_nadya.entity.Child;
 import com.example.project_for_nadya.exeption_handling.NoSuchChildExeption;
 import com.example.project_for_nadya.service.ReportService;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -59,21 +61,28 @@ public class MyRestController {
         return allChildByGroup;
     }
 
-//    @GetMapping("/count-by-group/{group_name}")
-//    public int getNumberOfChildrenInEachGroup(@PathVariable String group_name) {
-//        int count = reportService.getNumberOfChildrenInEachGroup(group_name);
-//        System.out.println("Кількість елементів у списку: " + count);
-//
-//        return count;
-//    }
-
     @GetMapping("/count-by-group/{group_name}")
     public ResponseEntity<String> getNumberOfChildrenInEachGroup(@PathVariable String group_name) {
         int count = reportService.getNumberOfChildrenInEachGroup(group_name);
-        String message = "Кількість дітей  у группі "+group_name +": "+ count;
+        String message = "Кількість дітей  у группі " + group_name + ": " + count;
 
         return ResponseEntity.ok(message);
     }
 
+    @GetMapping("/showAllDebtor")
+    public List<Child> getAllDebtors(){
+        List<Child> allDebtors = reportService.getAllDebtors();
+        return allDebtors;
+    }
+@GetMapping("/ChildrenByName/{name}")
+    public List<Child> getChildrenByName(@PathVariable String name){
+        List<Child> getChildrenName= reportService.getChildrenByName(name);
+        return getChildrenName;
 
+    }
+    @GetMapping("/allDistinctGroupNames")
+    public List<Child> getAllDistinctGroupNames(){
+        List<Child> allDistinctGroupNames= reportService.getAllDistinctGroupNames();
+        return allDistinctGroupNames;
+    }
 }

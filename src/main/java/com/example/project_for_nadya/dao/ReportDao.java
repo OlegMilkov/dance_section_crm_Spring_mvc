@@ -18,4 +18,8 @@ public interface ReportDao {
 public List<Child> getChildrenByGroup(String group_name);
 
 public  int getNumberOfChildrenInEachGroup(String group_name);
+
+public List <Child> getChildrenByName(String name);
+
+public List<Child>getAllDistinctGroupNames();
 }

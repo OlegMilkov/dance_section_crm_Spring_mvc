@@ -13,7 +13,7 @@ public class ReportDaoImpl implements ReportDao {
 
     @Autowired
     private EntityManager entityManager;
-
+    //------------------------------------------------------------
     @Override
     public List<Child> getAllChildren() {
         Query query = entityManager.createQuery("from Child ");
@@ -36,12 +36,14 @@ public class ReportDaoImpl implements ReportDao {
         entityManager.merge(child);
     }
 
+    //------------------------------------------------------------
     @Override
     public Child getChild(int id) {
         Child child = entityManager.find(Child.class, id);
         return child;
     }
 
+    //------------------------------------------------------------
     @Override
     public void deleteChild(int id) {
         Query query = entityManager.createQuery("delete from Child " + "where id = :childId");
@@ -49,14 +51,17 @@ public class ReportDaoImpl implements ReportDao {
         query.executeUpdate();
     }
 
+    //------------------------------------------------------------
     @Override
     public List<Child> getChildrenByGroup(String group_name) {
         Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.group_name = :groupName");
         query.setParameter("groupName", group_name);
         List<Child> result = query.getResultList();
+
         return result;
     }
 
+    //------------------------------------------------------------
     @Override
     public int getNumberOfChildrenInEachGroup(String group_name){
         Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.group_name = :groupName");
@@ -66,5 +71,24 @@ public class ReportDaoImpl implements ReportDao {
         return count;
     }
 
+    //------------------------------------------------------------
+    @Override
+    public List<Child> getChildrenByName(String name) {
+        Query query = entityManager.createQuery("SELECT c FROM Child c WHERE c.name = :childName");
+        query.setParameter("childName",name);
+        List<Child> childName=query.getResultList();
+        return childName;
+    }
+    //------------------------------------------------------------
+
+    @Override
+    public List<Child> getAllDistinctGroupNames() {
+        Query query= entityManager.createQuery("SELECT DISTINCT c.group_name FROM Child c");
+        List<Child> GroupNames = query.getResultList();
+
+        return GroupNames;
+    }
+
+    //------------------------------------------------------------
 
 }
