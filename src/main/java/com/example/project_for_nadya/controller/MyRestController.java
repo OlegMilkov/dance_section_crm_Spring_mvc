@@ -3,7 +3,6 @@ package com.example.project_for_nadya.controller;
 import com.example.project_for_nadya.entity.Child;
 import com.example.project_for_nadya.exeption_handling.NoSuchChildExeption;
 import com.example.project_for_nadya.service.ReportService;
-import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class MyRestController {
     public Child getChild(@PathVariable int id) {
         Child child = reportService.getChild(id);
         if (child == null) {
-            throw new NoSuchChildExeption("There is no Child with" + id + " in our Database");
+            throw new NoSuchChildExeption("There is no Child with " + id + " in our Database");
         }
         return child;
     }
@@ -70,19 +69,21 @@ public class MyRestController {
     }
 
     @GetMapping("/showAllDebtor")
-    public List<Child> getAllDebtors(){
+    public List<Child> getAllDebtors() {
         List<Child> allDebtors = reportService.getAllDebtors();
         return allDebtors;
     }
-@GetMapping("/ChildrenByName/{name}")
-    public List<Child> getChildrenByName(@PathVariable String name){
-        List<Child> getChildrenName= reportService.getChildrenByName(name);
+
+    @GetMapping("/ChildrenByName/{name}")
+    public List<Child> getChildrenByName(@PathVariable String name) {
+        List<Child> getChildrenName = reportService.getChildrenByName(name);
         return getChildrenName;
 
     }
+
     @GetMapping("/allDistinctGroupNames")
-    public List<Child> getAllDistinctGroupNames(){
-        List<Child> allDistinctGroupNames= reportService.getAllDistinctGroupNames();
+    public List<Child> getAllDistinctGroupNames() {
+        List<Child> allDistinctGroupNames = reportService.getAllDistinctGroupNames();
         return allDistinctGroupNames;
     }
 }
