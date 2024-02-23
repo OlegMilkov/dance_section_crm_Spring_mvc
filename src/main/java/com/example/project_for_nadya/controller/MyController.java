@@ -18,7 +18,6 @@ public class MyController {
 
     @RequestMapping("/")
     public String showAllChild(Model model) {
-
         List<Child> allChild = reportService.getAllChildren();
         model.addAttribute("allChild", allChild);
         return "all-Child";
@@ -68,5 +67,18 @@ public class MyController {
         return "redirect:/";
     }
 
+    @RequestMapping("/sortedByGroupAsc")
+    public String showAllChildrenSortedByGroupAsc(Model model) {
+        List<Child> allChildrenSortedByGroup = reportService.getAllChildrenSortedByGroupAsc();
+        model.addAttribute("allChild", allChildrenSortedByGroup);
+        return "all-Child";
+    }
+
+    @RequestMapping("/sortedByGroupDesc")
+    public String showAllChildrenSortedByGroupDesc(Model model) {
+        List<Child> allChildrenSortedByGroup = reportService.getAllChildrenSortedByGroupDesc();
+        model.addAttribute("allChild", allChildrenSortedByGroup);
+        return "all-Child";
+    }
 
 }

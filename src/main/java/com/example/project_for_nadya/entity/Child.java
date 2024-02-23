@@ -125,9 +125,14 @@ public class Child {
         return payment;
     }
 
-    public void setPayment(int payment) {
-        this.payment = payment;
+    public void setPayment(String payment) {
+        try {
+            this.payment = Integer.parseInt(payment.replaceAll("[^0-9]", ""));
+        } catch (NumberFormatException e) {
+            System.out.println("Помилка: Введене значення не є цілим числом.");
+        }
     }
+
 }
 
 

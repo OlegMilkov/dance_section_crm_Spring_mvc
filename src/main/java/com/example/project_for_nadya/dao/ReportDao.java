@@ -22,4 +22,9 @@ public  int getNumberOfChildrenInEachGroup(String group_name);
 public List <Child> getChildrenByName(String name);
 
 public List<Child>getAllDistinctGroupNames();
+
+    List<Child> getAllChildrenSortedByGroupAsc();
+
+    List<Child> getAllChildrenSortedByGroupDesc();
+
 }

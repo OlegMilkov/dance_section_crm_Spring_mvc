@@ -91,4 +91,16 @@ public class ReportDaoImpl implements ReportDao {
 
     //------------------------------------------------------------
 
+    @Override
+    public List<Child> getAllChildrenSortedByGroupAsc() {
+        Query query = entityManager.createQuery("SELECT c FROM Child c ORDER BY c.group_name ASC");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Child> getAllChildrenSortedByGroupDesc() {
+        Query query = entityManager.createQuery("SELECT c FROM Child c ORDER BY c.group_name DESC");
+        return query.getResultList();
+    }
+
 }

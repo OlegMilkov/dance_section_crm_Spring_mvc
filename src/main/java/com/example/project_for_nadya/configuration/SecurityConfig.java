@@ -42,6 +42,21 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http.csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/updateInfo").hasRole("MANAGER")
+//                        .requestMatchers("/deleteChild").hasRole("MANAGER")
+//                        .requestMatchers("/addNewChild").hasAnyRole("MANAGER", "HR")
+//                        .requestMatchers("/data/**").permitAll()
+//
+//                        .requestMatchers("/*").authenticated()
+//                )
+//                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+//                .build();
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
@@ -50,12 +65,15 @@ public class SecurityConfig {
                         .requestMatchers("/deleteChild").hasRole("MANAGER")
                         .requestMatchers("/addNewChild").hasAnyRole("MANAGER", "HR")
                         .requestMatchers("/data/**").permitAll()
-
                         .requestMatchers("/*").authenticated()
                 )
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+                .formLogin(formLogin -> formLogin
+                        // перенаправлення на головну сторінку після успішної аутентифікації
+                        .defaultSuccessUrl("/", true)
+                )
                 .build();
     }
+
 
 
 

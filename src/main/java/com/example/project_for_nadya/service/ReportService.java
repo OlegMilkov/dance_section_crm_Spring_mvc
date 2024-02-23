@@ -22,5 +22,10 @@ public interface ReportService {
     public List<Child>getChildrenByName(String name);
 
     public List <Child> getAllDistinctGroupNames();
+
+    public List<Child> getAllChildrenSortedByGroupAsc();
+
+    public List<Child> getAllChildrenSortedByGroupDesc();
+
 }
 

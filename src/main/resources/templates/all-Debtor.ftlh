@@ -14,15 +14,18 @@
         h2 {
             text-align: center;
             color: #007BFF;
+            font-size: 40px;
+            margin-bottom: 5px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            overflow: hidden;
         }
 
         th, td {
@@ -34,10 +37,16 @@
         th {
             background-color: #007BFF;
             color: #fff;
+            vertical-align: center; /* Вертикальне вирівнювання тексту вгору */
         }
 
         .center {
             width: 10%;
+        }
+
+        .highlight {
+            background-color: #ffcccc;
+            font-weight: bold;
         }
 
         input[type="button"] {
@@ -48,15 +57,29 @@
             color: #fff;
             border: none;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         input[type="button"]:hover {
             background-color: #0056b3;
         }
+
+        #sortSelection {
+            background-color: #007BFF;
+            border: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            color: #fff;
+        }
+
+        #sortSelection:focus {
+            background-color: #fff;
+            color: #007BFF;
+        }
     </style>
 </head>
 <body>
 <h2> Debtors </h2>
+<input type="button" value="Main page" onclick="window.location.href='mainPage'"/>
 
 <table>
     <thead>
@@ -74,8 +97,7 @@
     </tr>
     </thead>
     <tbody>
-
-    <#list allDebtor  as child>
+    <#list allDebtor as child>
         <#assign updateButton = "/updateInfo?childId=" + child.id>
         <#assign deleteButton = "/deleteChild?childId=" + child.id>
         <tr>
@@ -83,10 +105,10 @@
             <td class="center">${child.surname}</td>
             <td class="center">${child.group_name}</td>
             <td class="center">${child.birthday}</td>
-            <td class="center">${child.health_certificate}</td>
-            <td class="center">${child.form}</td>
-            <td class="center">${child.safety_rules}</td>
-            <td class="center">${child.birth_certificate}</td>
+            <td class="center<#if child.health_certificate == '-'> highlight </#if>">${child.health_certificate}</td>
+            <td class="center<#if child.form == '-'> highlight </#if>">${child.form}</td>
+            <td class="center<#if child.safety_rules == '-'> highlight </#if>">${child.safety_rules}</td>
+            <td class="center<#if child.birth_certificate == '-'> highlight </#if>">${child.birth_certificate}</td>
             <td class="center">${child.payment}</td>
             <td class="center">
                 <input type="button" value="Update" onclick="window.location.href='${updateButton}'"/>
@@ -96,8 +118,5 @@
     </#list>
     </tbody>
 </table>
-<input type="button" value="Main page" onclick="window.location.href='mainPage'"/>
-
-
 </body>
 </html>
