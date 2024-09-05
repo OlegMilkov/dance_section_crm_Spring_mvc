@@ -1,4 +1,4 @@
-package com.example.project_for_nadya;
+package com.example.dance_section_crm_Spring_mvc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

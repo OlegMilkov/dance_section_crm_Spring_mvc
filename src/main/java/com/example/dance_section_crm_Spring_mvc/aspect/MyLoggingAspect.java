@@ -1,4 +1,4 @@
-package com.example.project_for_nadya.aspect;
+package com.example.dance_section_crm_Spring_mvc.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class MyLoggingAspect {
-    @Around("execution(* com.example.project_for_nadya.*.*.*(..))")
+    @Around("execution(* com.example.dance_section_crm_Spring_mvc.*.*.*(..))")
     public Object aroundAllRepositoryMethodAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
         MethodSignature methodSignature=(MethodSignature) proceedingJoinPoint.getSignature();
 

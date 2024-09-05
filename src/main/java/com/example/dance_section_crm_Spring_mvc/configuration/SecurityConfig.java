@@ -1,4 +1,4 @@
-package com.example.project_for_nadya.configuration;
+package com.example.dance_section_crm_Spring_mvc.configuration;
 
 
 import javax.sql.DataSource;
@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,12 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
 @EnableWebSecurity
-//@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Bean
@@ -42,30 +39,14 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http.csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/updateInfo").hasRole("MANAGER")
-//                        .requestMatchers("/deleteChild").hasRole("MANAGER")
-//                        .requestMatchers("/addNewChild").hasAnyRole("MANAGER", "HR")
-//                        .requestMatchers("/data/**").permitAll()
-//
-//                        .requestMatchers("/*").authenticated()
-//                )
-//                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-//                .build();
-//    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/updateInfo").hasRole("MANAGER")
-                        .requestMatchers("/deleteChild").hasRole("MANAGER")
-                        .requestMatchers("/addNewChild").hasAnyRole("MANAGER", "HR")
-                        .requestMatchers("/data/**").permitAll()
-                        .requestMatchers("/*").authenticated()
+                        .requestMatchers("/addNewChild").hasAnyRole("MANAGER", "TEACHER")
+                        .requestMatchers("/updateInfo").hasRole("HR")
+                                .requestMatchers("/deleteChild").hasRole("MANAGER")
+                        .requestMatchers("/**").authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         // перенаправлення на головну сторінку після успішної аутентифікації

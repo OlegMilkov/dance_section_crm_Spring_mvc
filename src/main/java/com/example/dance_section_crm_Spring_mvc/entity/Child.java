@@ -1,4 +1,4 @@
-package com.example.project_for_nadya.entity;
+package com.example.dance_section_crm_Spring_mvc.entity;
 
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
-package com.example.project_for_nadya.dao;
+package com.example.dance_section_crm_Spring_mvc.dao;
 
-import com.example.project_for_nadya.entity.Child;
+import com.example.dance_section_crm_Spring_mvc.entity.Child;
 
 import java.util.List;
 

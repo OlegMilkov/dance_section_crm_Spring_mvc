@@ -1,4 +1,4 @@
-package com.example.project_for_nadya.exeption_handling;
+package com.example.dance_section_crm_Spring_mvc.exeption_handling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
-package com.example.project_for_nadya.service;
+package com.example.dance_section_crm_Spring_mvc.service;
 
-import com.example.project_for_nadya.dao.ReportDao;
-import com.example.project_for_nadya.entity.Child;
+import com.example.dance_section_crm_Spring_mvc.dao.ReportDao;
+import com.example.dance_section_crm_Spring_mvc.entity.Child;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

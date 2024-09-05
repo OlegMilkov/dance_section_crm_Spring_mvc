@@ -82,6 +82,9 @@
 <body>
 <h2>Students</h2>
 
+<input type="button" value="Add" onclick="window.location.href='addNewChild'"/>
+<input type="button" value="Debtor" onclick="window.location.href='showAllDebtor'"/>
+
 <table>
     <thead>
     <tr>
@@ -105,8 +108,7 @@
     </tr>
     </thead>
 
-    <input type="button" value="Add" onclick="window.location.href='addNewChild'"/>
-    <input type="button" value="Debtor" onclick="window.location.href='showAllDebtor'"/>
+
 
     <tbody>
     <#list allChild as child>

@@ -1,8 +1,9 @@
-package com.example.project_for_nadya.controller;
+package com.example.dance_section_crm_Spring_mvc.controller;
 
-import com.example.project_for_nadya.entity.Child;
-import com.example.project_for_nadya.service.ReportService;
+import com.example.dance_section_crm_Spring_mvc.entity.Child;
+import com.example.dance_section_crm_Spring_mvc.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class MyController {
 
 
     @RequestMapping("/addNewChild")
-//    @PreAuthorize("hasRole('ROLE_EMPLOYEE') OR hasRole('ROLE_HR')")
+//    @PreAuthorize("hasRole('ROLE_TEACHER')OR hasRole('ROLE_MANAGER') OR hasRole('ROLE_HR')")
     public String addNewChild(Model model) {
         Child child = new Child();
         model.addAttribute("child", child);
@@ -52,7 +53,6 @@ public class MyController {
 
 
     @RequestMapping("/updateInfo")
-//    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public String updateChild(@RequestParam("childId") int id, Model model) {
         Child child = reportService.getChild(id);
         model.addAttribute("child", child);
@@ -61,7 +61,6 @@ public class MyController {
 
 
     @RequestMapping("/deleteChild")
-//    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public String deleteChild(@RequestParam("childId") int id) {
         reportService.deleteChild(id);
         return "redirect:/";
