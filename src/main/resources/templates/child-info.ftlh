@@ -48,7 +48,7 @@
 <body>
 <h2>Employee Info</h2>
 
-<form action="/saveChild">
+<form action="/saveChild" method="post">
 
     <input type="hidden" name="id" value="${child.id}"/>
 

@@ -20,7 +20,7 @@ public class Child {
     private String group_name;
     @Column(name = "birthday")
     private LocalDate birthday;
-    @Column(name = "health certificate")
+    @Column(name = "health_certificate")
     private String health_certificate;
     @Column(name = "form")
     private String form;

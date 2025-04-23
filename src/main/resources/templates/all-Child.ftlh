@@ -50,7 +50,8 @@
             font-weight: bold;
         }
 
-        input[type="button"] {
+        input[type="button"],
+        input[type="submit"]{
             padding: 10px;
             margin: 5px;
             cursor: pointer;
@@ -61,7 +62,8 @@
             transition: background-color 0.3s ease;
         }
 
-        input[type="button"]:hover {
+        input[type="button"]:hover,
+        input[type="submit"]:hover {
             background-color: #0056b3;
         }
 
@@ -82,7 +84,10 @@
 <body>
 <h2>Students</h2>
 
-<input type="button" value="Add" onclick="window.location.href='addNewChild'"/>
+<form action="addNewChild" method="post" style="display:inline;">
+    <input type="submit" value="Add"/>
+</form>
+
 <input type="button" value="Debtor" onclick="window.location.href='showAllDebtor'"/>
 
 <table>
@@ -127,8 +132,13 @@
 
             <td class="center">${child.payment}</td>
             <td class="center">
+
                 <input type="button" value="Update" onclick="window.location.href='${updateButton}'"/>
-                <input type="button" value="Delete" onclick="window.location.href='${deleteButton}'"/>
+
+                <form action="${deleteButton}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <input type="submit" value="Delete"/>
+                </form>
             </td>
         </tr>
     </#list>

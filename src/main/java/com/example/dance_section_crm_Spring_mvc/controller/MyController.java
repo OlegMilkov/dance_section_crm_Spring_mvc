@@ -13,18 +13,22 @@ import java.util.List;
 @Controller
 public class MyController {
 
-    @Autowired
-    private ReportService reportService;
+
+    private final ReportService reportService;
+
+    public MyController(ReportService reportService) {
+        this.reportService = reportService;
+    }
 
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String showAllChild(Model model) {
         List<Child> allChild = reportService.getAllChildren();
         model.addAttribute("allChild", allChild);
         return "all-Child";
     }
 
-    @RequestMapping("/showAllDebtor")
+    @GetMapping("/showAllDebtor")
     public String showAllDebtor(Model model) {
         List<Child> allDebtor = reportService.getAllDebtors();
         model.addAttribute("allDebtor", allDebtor);
@@ -32,27 +36,26 @@ public class MyController {
     }
 
 
-    @RequestMapping("/addNewChild")
-//    @PreAuthorize("hasRole('ROLE_TEACHER')OR hasRole('ROLE_MANAGER') OR hasRole('ROLE_HR')")
+    @PostMapping("/addNewChild")
     public String addNewChild(Model model) {
         Child child = new Child();
         model.addAttribute("child", child);
         return "child-info";
     }
 
-    @RequestMapping("/saveChild")
+    @PostMapping("/saveChild")
     public String saveChild(@ModelAttribute("child") Child child) {
         reportService.saveChild(child);
         return "redirect:/";
     }
 
-    @RequestMapping("/mainPage")
+    @GetMapping("/mainPage")
     public String mainPage() {
         return "redirect:/";
     }
 
 
-    @RequestMapping("/updateInfo")
+    @GetMapping("/updateInfo")
     public String updateChild(@RequestParam("childId") int id, Model model) {
         Child child = reportService.getChild(id);
         model.addAttribute("child", child);
@@ -60,20 +63,20 @@ public class MyController {
     }
 
 
-    @RequestMapping("/deleteChild")
+    @DeleteMapping("/deleteChild")
     public String deleteChild(@RequestParam("childId") int id) {
         reportService.deleteChild(id);
         return "redirect:/";
     }
 
-    @RequestMapping("/sortedByGroupAsc")
+    @GetMapping("/sortedByGroupAsc")
     public String showAllChildrenSortedByGroupAsc(Model model) {
         List<Child> allChildrenSortedByGroup = reportService.getAllChildrenSortedByGroupAsc();
         model.addAttribute("allChild", allChildrenSortedByGroup);
         return "all-Child";
     }
 
-    @RequestMapping("/sortedByGroupDesc")
+    @GetMapping("/sortedByGroupDesc")
     public String showAllChildrenSortedByGroupDesc(Model model) {
         List<Child> allChildrenSortedByGroup = reportService.getAllChildrenSortedByGroupDesc();
         model.addAttribute("allChild", allChildrenSortedByGroup);
